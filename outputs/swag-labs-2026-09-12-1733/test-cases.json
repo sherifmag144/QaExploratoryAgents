@@ -1,0 +1,781 @@
+{
+  "runId": "swag-labs-2026-09-12-1733",
+  "appUrl": "https://www.saucedemo.com",
+  "appName": "Swag Labs",
+  "createdAt": "2026-09-12T17:33:00+03:00",
+  "modules": [
+    {
+      "key": "AUTH",
+      "name": "Login and Session",
+      "url": "https://www.saucedemo.com/",
+      "notes": "Login form with Username, Password, Login. Six demo accounts listed on the page. Errors appear in one alert box above the button."
+    },
+    {
+      "key": "PROD",
+      "name": "Products",
+      "url": "https://www.saucedemo.com/inventory.html",
+      "notes": "Six product cards, a Sort products dropdown with four options, a side menu, a cart icon, and a product details page at /inventory-item.html?id=N."
+    },
+    {
+      "key": "CART",
+      "name": "Cart",
+      "url": "https://www.saucedemo.com/cart.html",
+      "notes": "Lists the added products with QTY fixed at 1. No quantity editor. Remove per row, Continue Shopping and Checkout buttons."
+    },
+    {
+      "key": "CHK",
+      "name": "Checkout",
+      "url": "https://www.saucedemo.com/checkout-step-one.html",
+      "notes": "Three steps: information form (First Name, Last Name, Zip/Postal Code), overview with Item total, Tax and Total, then the confirmation page."
+    }
+  ],
+  "cases": [
+    {
+      "id": "TC-AUTH-001",
+      "order": 1,
+      "smoke": true,
+      "module": "AUTH",
+      "title": "[Smoke] Standard user can log in and land on the Products page",
+      "preconditions": "The browser is open on https://www.saucedemo.com and no user is logged in.",
+      "steps": [
+        "1) Type the username in the Username field",
+        "2) Type the password in the Password field",
+        "3) Click Login"
+      ],
+      "testData": "Username: standard_user | Password: secret_sauce",
+      "expectedResult": "The Products page opens at /inventory.html and the page header shows \"Products\".",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/",
+        "selectors": {
+          "username": "[data-test=\"username\"]",
+          "password": "[data-test=\"password\"]",
+          "loginButton": "[data-test=\"login-button\"]",
+          "title": "[data-test=\"title\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-PROD-001",
+      "order": 2,
+      "smoke": true,
+      "module": "PROD",
+      "title": "[Smoke] Products page shows the six products with name and price",
+      "preconditions": "Logged in as standard_user, on the Products page.",
+      "steps": [
+        "1) Look at the product list",
+        "2) Count the product cards",
+        "3) Read the name and price on each card"
+      ],
+      "testData": "N/A",
+      "expectedResult": "Six product cards are shown. Each card has a name, a description, a price and an \"Add to cart\" button. The first card is \"Sauce Labs Backpack\" at $29.99.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "item": "[data-test=\"inventory-item\"]",
+          "itemName": "[data-test=\"inventory-item-name\"]",
+          "itemPrice": "[data-test=\"inventory-item-price\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CART-001",
+      "order": 3,
+      "smoke": true,
+      "module": "CART",
+      "title": "[Smoke] Adding a product updates the cart count and the button becomes Remove",
+      "preconditions": "Logged in as standard_user, on the Products page, cart is empty.",
+      "steps": [
+        "1) Click \"Add to cart\" on the Sauce Labs Backpack card",
+        "2) Look at the cart icon in the top bar",
+        "3) Look at the button on the Backpack card"
+      ],
+      "testData": "Product: Sauce Labs Backpack ($29.99)",
+      "expectedResult": "The cart icon shows the number 1 and the button on the Backpack card now reads \"Remove\".",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "addBackpack": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+          "removeBackpack": "[data-test=\"remove-sauce-labs-backpack\"]",
+          "cartBadge": ".shopping_cart_badge"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CART-002",
+      "order": 4,
+      "smoke": true,
+      "module": "CART",
+      "title": "[Smoke] Cart page lists the products that were added",
+      "preconditions": "Logged in as standard_user with Sauce Labs Backpack and Sauce Labs Bike Light in the cart.",
+      "steps": [
+        "1) Click the cart icon in the top bar",
+        "2) Read the rows in the cart list"
+      ],
+      "testData": "Sauce Labs Backpack ($29.99), Sauce Labs Bike Light ($9.99)",
+      "expectedResult": "The Your Cart page opens at /cart.html and shows two rows: \"Sauce Labs Backpack\" $29.99 and \"Sauce Labs Bike Light\" $9.99, each with QTY 1.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/cart.html",
+        "selectors": {
+          "cartLink": "[data-test=\"shopping-cart-link\"]",
+          "cartItem": ".cart_item",
+          "cartQuantity": "[data-test=\"item-quantity\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-001",
+      "order": 5,
+      "smoke": true,
+      "module": "CHK",
+      "title": "[Smoke] An order can be placed from cart to confirmation",
+      "preconditions": "Logged in as standard_user with at least one product in the cart, on the Your Cart page.",
+      "steps": [
+        "1) Click Checkout",
+        "2) Fill in First Name, Last Name and Zip/Postal Code",
+        "3) Click Continue",
+        "4) Click Finish on the overview page"
+      ],
+      "testData": "First Name: QA-AUTO-Sherif | Last Name: Magdy | Zip: 11511",
+      "expectedResult": "The confirmation page opens at /checkout-complete.html and shows \"Thank you for your order!\".",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/cart.html",
+        "selectors": {
+          "checkout": "[data-test=\"checkout\"]",
+          "firstName": "[data-test=\"firstName\"]",
+          "lastName": "[data-test=\"lastName\"]",
+          "postalCode": "[data-test=\"postalCode\"]",
+          "continue": "[data-test=\"continue\"]",
+          "finish": "[data-test=\"finish\"]",
+          "completeHeader": "[data-test=\"complete-header\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-AUTH-002",
+      "order": 6,
+      "smoke": false,
+      "module": "AUTH",
+      "title": "Login is blocked when the username is empty",
+      "preconditions": "On the login page, no user is logged in.",
+      "steps": [
+        "1) Leave the Username field empty",
+        "2) Leave the Password field empty",
+        "3) Click Login"
+      ],
+      "testData": "N/A",
+      "expectedResult": "The user stays on the login page and the message \"Epic sadface: Username is required\" is shown.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/",
+        "selectors": {
+          "loginButton": "[data-test=\"login-button\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-AUTH-003",
+      "order": 7,
+      "smoke": false,
+      "module": "AUTH",
+      "title": "Login is blocked when the password is empty",
+      "preconditions": "On the login page, no user is logged in.",
+      "steps": [
+        "1) Type the username in the Username field",
+        "2) Leave the Password field empty",
+        "3) Click Login"
+      ],
+      "testData": "Username: standard_user",
+      "expectedResult": "The user stays on the login page and the message \"Epic sadface: Password is required\" is shown.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/",
+        "selectors": {
+          "username": "[data-test=\"username\"]",
+          "loginButton": "[data-test=\"login-button\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-AUTH-004",
+      "order": 8,
+      "smoke": false,
+      "module": "AUTH",
+      "title": "A wrong password is rejected",
+      "preconditions": "On the login page, no user is logged in.",
+      "steps": [
+        "1) Type a valid username",
+        "2) Type a password that is not the real one",
+        "3) Click Login"
+      ],
+      "testData": "Username: standard_user | Password: wrong_password",
+      "expectedResult": "The user stays on the login page and the message \"Epic sadface: Username and password do not match any user in this service\" is shown.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/",
+        "selectors": {
+          "username": "[data-test=\"username\"]",
+          "password": "[data-test=\"password\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-AUTH-005",
+      "order": 9,
+      "smoke": false,
+      "module": "AUTH",
+      "title": "A locked out user cannot log in",
+      "preconditions": "On the login page. The account locked_out_user exists and is locked.",
+      "steps": [
+        "1) Type the locked out username",
+        "2) Type the correct password",
+        "3) Click Login"
+      ],
+      "testData": "Username: locked_out_user | Password: secret_sauce",
+      "expectedResult": "The user stays on the login page and the message \"Epic sadface: Sorry, this user has been locked out.\" is shown.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/",
+        "selectors": {
+          "username": "[data-test=\"username\"]",
+          "password": "[data-test=\"password\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-AUTH-006",
+      "order": 10,
+      "smoke": false,
+      "module": "AUTH",
+      "title": "Logout returns the user to the login page",
+      "preconditions": "Logged in as standard_user on any page inside the application.",
+      "steps": [
+        "1) Click the menu button in the top left",
+        "2) Click Logout"
+      ],
+      "testData": "N/A",
+      "expectedResult": "The login page opens at / and the Username, Password and Login controls are shown again.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "burgerButton": "#react-burger-menu-btn",
+          "logout": "#logout_sidebar_link",
+          "loginButton": "[data-test=\"login-button\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-AUTH-007",
+      "order": 11,
+      "smoke": false,
+      "module": "AUTH",
+      "title": "The Products page cannot be opened by URL while logged out",
+      "preconditions": "No user is logged in. The browser is on the login page.",
+      "steps": [
+        "1) Type https://www.saucedemo.com/inventory.html in the address bar",
+        "2) Press Enter"
+      ],
+      "testData": "URL: https://www.saucedemo.com/inventory.html",
+      "expectedResult": "The login page is shown instead of the products, with the message \"Epic sadface: You can only access '/inventory.html' when you are logged in.\"",
+      "testType": "Non-Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "error": "[data-test=\"error\"]",
+          "loginButton": "[data-test=\"login-button\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-AUTH-008",
+      "order": 12,
+      "smoke": false,
+      "module": "AUTH",
+      "title": "The browser Back button after logout does not show the previous page",
+      "preconditions": "Logged in as standard_user and currently on the order confirmation page.",
+      "steps": [
+        "1) Open the menu and click Logout",
+        "2) Click the browser Back button"
+      ],
+      "testData": "N/A",
+      "expectedResult": "The login page stays on screen with the message \"Epic sadface: You can only access '/checkout-complete.html' when you are logged in.\" The previous page content is not shown.",
+      "testType": "Non-Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-complete.html",
+        "selectors": {
+          "logout": "#logout_sidebar_link",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CART-003",
+      "order": 13,
+      "smoke": false,
+      "module": "CART",
+      "title": "Removing the last product from the cart empties it and hides the cart count",
+      "preconditions": "Logged in as standard_user with exactly one product in the cart, on the Your Cart page.",
+      "steps": [
+        "1) Click Remove on the product row",
+        "2) Look at the cart list and the cart icon"
+      ],
+      "testData": "Product: Sauce Labs Onesie ($7.99)",
+      "expectedResult": "The product row disappears, no product rows are left in the cart, and the number on the cart icon is gone.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/cart.html",
+        "selectors": {
+          "removeOnesie": "[data-test=\"remove-sauce-labs-onesie\"]",
+          "cartItem": ".cart_item",
+          "cartBadge": ".shopping_cart_badge"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CART-004",
+      "order": 14,
+      "smoke": false,
+      "module": "CART",
+      "title": "The cart is empty after an order is completed",
+      "preconditions": "Logged in as standard_user and an order has just been completed.",
+      "steps": [
+        "1) Look at the cart icon on the confirmation page",
+        "2) Click \"Back Home\"",
+        "3) Click the cart icon"
+      ],
+      "testData": "N/A",
+      "expectedResult": "The cart icon shows no number and the Your Cart page shows no product rows.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-complete.html",
+        "selectors": {
+          "cartBadge": ".shopping_cart_badge",
+          "backToProducts": "[data-test=\"back-to-products\"]",
+          "cartItem": ".cart_item"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-002",
+      "order": 15,
+      "smoke": false,
+      "module": "CHK",
+      "title": "Checkout is blocked when First Name is empty",
+      "preconditions": "Logged in as standard_user with a product in the cart, on the checkout information page.",
+      "steps": [
+        "1) Leave all three fields empty",
+        "2) Click Continue"
+      ],
+      "testData": "N/A",
+      "expectedResult": "The page stays on /checkout-step-one.html and the message \"Error: First Name is required\" is shown.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-step-one.html",
+        "selectors": {
+          "continue": "[data-test=\"continue\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-003",
+      "order": 16,
+      "smoke": false,
+      "module": "CHK",
+      "title": "Checkout is blocked when Last Name is empty",
+      "preconditions": "Logged in as standard_user with a product in the cart, on the checkout information page.",
+      "steps": [
+        "1) Fill in First Name only",
+        "2) Leave Last Name and Zip/Postal Code empty",
+        "3) Click Continue"
+      ],
+      "testData": "First Name: QA-AUTO-Sherif",
+      "expectedResult": "The page stays on /checkout-step-one.html and the message \"Error: Last Name is required\" is shown.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-step-one.html",
+        "selectors": {
+          "firstName": "[data-test=\"firstName\"]",
+          "continue": "[data-test=\"continue\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-004",
+      "order": 17,
+      "smoke": false,
+      "module": "CHK",
+      "title": "Checkout is blocked when Zip/Postal Code is empty",
+      "preconditions": "Logged in as standard_user with a product in the cart, on the checkout information page.",
+      "steps": [
+        "1) Fill in First Name and Last Name",
+        "2) Leave Zip/Postal Code empty",
+        "3) Click Continue"
+      ],
+      "testData": "First Name: QA-AUTO-Sherif | Last Name: Magdy",
+      "expectedResult": "The page stays on /checkout-step-one.html and the message \"Error: Postal Code is required\" is shown.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-step-one.html",
+        "selectors": {
+          "firstName": "[data-test=\"firstName\"]",
+          "lastName": "[data-test=\"lastName\"]",
+          "continue": "[data-test=\"continue\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-005",
+      "order": 18,
+      "smoke": false,
+      "module": "CHK",
+      "title": "An order cannot be placed when the cart is empty",
+      "preconditions": "Logged in as standard_user with an empty cart, on the Your Cart page.",
+      "steps": [
+        "1) Click Checkout",
+        "2) Fill in First Name, Last Name and Zip/Postal Code",
+        "3) Click Continue"
+      ],
+      "testData": "First Name: QA-AUTO-Empty | Last Name: Cart | Zip: 11511",
+      "expectedResult": "The application stops the user from going further with an empty cart and does not reach the order overview page.",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/cart.html",
+        "selectors": {
+          "checkout": "[data-test=\"checkout\"]",
+          "continue": "[data-test=\"continue\"]",
+          "finish": "[data-test=\"finish\"]",
+          "cartItem": ".cart_item"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-006",
+      "order": 19,
+      "smoke": false,
+      "module": "CHK",
+      "title": "The order total is the item total plus tax",
+      "preconditions": "Logged in as standard_user with Sauce Labs Backpack and Sauce Labs Bike Light in the cart.",
+      "steps": [
+        "1) Click Checkout on the Your Cart page",
+        "2) Fill in the three fields and click Continue",
+        "3) Read the Item total, Tax and Total lines on the overview page"
+      ],
+      "testData": "Backpack $29.99 + Bike Light $9.99 | First Name: QA-AUTO-Sherif | Last Name: Magdy | Zip: 11511",
+      "expectedResult": "The overview shows \"Item total: $39.98\", \"Tax: $3.20\" and \"Total: $43.18\".",
+      "testType": "Functional",
+      "priority": "High",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-step-two.html",
+        "selectors": {
+          "subtotal": "[data-test=\"subtotal-label\"]",
+          "tax": "[data-test=\"tax-label\"]",
+          "total": "[data-test=\"total-label\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-PROD-002",
+      "order": 20,
+      "smoke": false,
+      "module": "PROD",
+      "title": "Sorting by Price (low to high) puts the cheapest product first",
+      "preconditions": "Logged in as standard_user, on the Products page.",
+      "steps": [
+        "1) Open the \"Sort products\" dropdown",
+        "2) Choose \"Price (low to high)\"",
+        "3) Read the prices from the first card to the last"
+      ],
+      "testData": "Sort option: \"Price (low to high)\"",
+      "expectedResult": "The products are ordered $7.99, $9.99, $15.99, $15.99, $29.99, $49.99, with \"Sauce Labs Onesie\" first and \"Sauce Labs Fleece Jacket\" last.",
+      "testType": "Functional",
+      "priority": "Medium",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "sort": "[data-test=\"product-sort-container\"]",
+          "itemPrice": "[data-test=\"inventory-item-price\"]",
+          "itemName": "[data-test=\"inventory-item-name\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-PROD-003",
+      "order": 21,
+      "smoke": false,
+      "module": "PROD",
+      "title": "The chosen sort order stays after the page is refreshed",
+      "preconditions": "Logged in as standard_user on the Products page with sorting set to Price (low to high).",
+      "steps": [
+        "1) Refresh the page",
+        "2) Read the value shown in the sort dropdown",
+        "3) Read the order of the products"
+      ],
+      "testData": "Sort option: \"Price (low to high)\"",
+      "expectedResult": "The sort dropdown still shows \"Price (low to high)\" and the cheapest product is still first.",
+      "testType": "Non-Functional",
+      "priority": "Medium",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "sort": "[data-test=\"product-sort-container\"]",
+          "itemName": "[data-test=\"inventory-item-name\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-PROD-004",
+      "order": 22,
+      "smoke": false,
+      "module": "PROD",
+      "title": "The product details page shows the name, price and description of the product opened",
+      "preconditions": "Logged in as standard_user, on the Products page.",
+      "steps": [
+        "1) Click the product name \"Sauce Labs Backpack\"",
+        "2) Read the name, description and price on the page"
+      ],
+      "testData": "Product: Sauce Labs Backpack ($29.99)",
+      "expectedResult": "The page opens at /inventory-item.html?id=4 and shows \"Sauce Labs Backpack\", its description and the price $29.99, with a Back to products button.",
+      "testType": "Functional",
+      "priority": "Medium",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "titleLink": "[data-test=\"item-4-title-link\"]",
+          "detailName": "[data-test=\"inventory-item-name\"]",
+          "detailPrice": "[data-test=\"inventory-item-price\"]",
+          "backToProducts": "[data-test=\"back-to-products\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CART-005",
+      "order": 23,
+      "smoke": false,
+      "module": "CART",
+      "title": "Products stay in the cart after the page is refreshed",
+      "preconditions": "Logged in as standard_user with two products in the cart, on the Products page.",
+      "steps": [
+        "1) Refresh the page",
+        "2) Look at the number on the cart icon"
+      ],
+      "testData": "Sauce Labs Backpack, Sauce Labs Bike Light",
+      "expectedResult": "The cart icon still shows the number 2.",
+      "testType": "Non-Functional",
+      "priority": "Medium",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "cartBadge": ".shopping_cart_badge"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-007",
+      "order": 24,
+      "smoke": false,
+      "module": "CHK",
+      "title": "A Zip/Postal Code made only of spaces is rejected",
+      "preconditions": "Logged in as standard_user with a product in the cart, on the checkout information page.",
+      "steps": [
+        "1) Fill in First Name and Last Name",
+        "2) Type three spaces in the Zip/Postal Code field",
+        "3) Click Continue"
+      ],
+      "testData": "First Name: QA-AUTO-Sherif | Last Name: Magdy | Zip: \"   \" (three spaces)",
+      "expectedResult": "The page stays on /checkout-step-one.html and the message \"Error: Postal Code is required\" is shown.",
+      "testType": "Functional",
+      "priority": "Medium",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-step-one.html",
+        "selectors": {
+          "postalCode": "[data-test=\"postalCode\"]",
+          "continue": "[data-test=\"continue\"]",
+          "error": "[data-test=\"error\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-PROD-005",
+      "order": 25,
+      "smoke": false,
+      "module": "PROD",
+      "title": "The cart icon label is written correctly when there is one product",
+      "preconditions": "Logged in as standard_user with exactly one product in the cart.",
+      "steps": [
+        "1) Move the focus to the cart icon in the top bar",
+        "2) Read the name the screen reader announces for the icon"
+      ],
+      "testData": "One product in the cart",
+      "expectedResult": "The cart icon is announced as \"Cart, 1 item\" — singular, not \"1 items\".",
+      "testType": "Non-Functional",
+      "priority": "Low",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "cartLink": "[data-test=\"shopping-cart-link\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-PROD-006",
+      "order": 26,
+      "smoke": false,
+      "module": "PROD",
+      "title": "The Dynamic Catalog menu item closes the menu and opens its own page",
+      "preconditions": "Logged in as standard_user, on the Products page.",
+      "steps": [
+        "1) Click the menu button in the top left",
+        "2) Click \"Dynamic Catalog\"",
+        "3) Look at the menu and at the page that opens"
+      ],
+      "testData": "N/A",
+      "expectedResult": "The side menu closes and a catalog page opens that is different from the All Items list.",
+      "testType": "Functional",
+      "priority": "Low",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/inventory.html",
+        "selectors": {
+          "burgerButton": "#react-burger-menu-btn",
+          "dynamicCatalog": "#dynamic_catalog_sidebar_link",
+          "menuWrap": ".bm-menu-wrap",
+          "itemName": "[data-test=\"inventory-item-name\"]"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CART-006",
+      "order": 27,
+      "smoke": false,
+      "module": "CART",
+      "title": "An empty cart shows a message telling the user it is empty",
+      "preconditions": "Logged in as standard_user with an empty cart.",
+      "steps": [
+        "1) Click the cart icon",
+        "2) Read the content of the cart area"
+      ],
+      "testData": "N/A",
+      "expectedResult": "The Your Cart page shows a clear message such as \"Your cart is empty\" instead of only the QTY and Description headers.",
+      "testType": "Non-Functional",
+      "priority": "Low",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/cart.html",
+        "selectors": {
+          "cartLink": "[data-test=\"shopping-cart-link\"]",
+          "cartList": ".cart_list",
+          "cartItem": ".cart_item"
+        },
+        "risk": "none"
+      }
+    },
+    {
+      "id": "TC-CHK-008",
+      "order": 28,
+      "smoke": false,
+      "module": "CHK",
+      "title": "The checkout fields have a real label, not only placeholder text",
+      "preconditions": "Logged in as standard_user with a product in the cart, on the checkout information page.",
+      "steps": [
+        "1) Move the focus into the First Name field",
+        "2) Read the name announced for the field",
+        "3) Repeat for Last Name and Zip/Postal Code"
+      ],
+      "testData": "N/A",
+      "expectedResult": "Each of the three fields is announced with its own label (\"First Name\", \"Last Name\", \"Zip/Postal Code\") that stays visible after the user starts typing.",
+      "testType": "Non-Functional",
+      "priority": "Low",
+      "automatable": true,
+      "automationHint": {
+        "entryUrl": "/checkout-step-one.html",
+        "selectors": {
+          "firstName": "[data-test=\"firstName\"]",
+          "lastName": "[data-test=\"lastName\"]",
+          "postalCode": "[data-test=\"postalCode\"]"
+        },
+        "risk": "none"
+      }
+    }
+  ]
+}

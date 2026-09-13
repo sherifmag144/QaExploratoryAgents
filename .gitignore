@@ -1,0 +1,26 @@
+# ---- Secrets. Never commit these. ----
+# Real URLs, usernames and passwords for the app under test.
+config/target.json
+
+# A live logged-in session: cookies and tokens. Same value as a password.
+tests/PlaywrightTest/.auth/
+**/.auth/
+*.env
+.env*
+
+# ---- Machine-generated. No value in git, lots of noise. ----
+node_modules/
+tests/PlaywrightTest/specs/*/test-results/
+outputs/*/test-results/
+outputs/*/raw-playwright.json
+playwright-report/
+*.zip
+
+# ---- Editor / OS ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ---- Keep the example, never the filled-in copy ----
+!config/target.example.json

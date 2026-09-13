@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test Execution Report — Swag Labs — swag-labs-2026-09-12-1733</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; background:#F8F9FA; color:#1F2937;
+         font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+         font-size:14px; line-height:1.55; }
+  .wrap { max-width:1100px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:24px; margin:0 0 4px; }
+  h2 { font-size:17px; margin:36px 0 12px; }
+  h3 { font-size:15px; margin:0 0 10px; }
+  h4 { font-size:13px; margin:18px 0 6px; color:#6B7280;
+        text-transform:uppercase; letter-spacing:.04em; }
+  p { margin:0 0 10px; }
+  a { color:#1F2937; }
+  .muted { color:#6B7280; }
+  .mono { font-family:ui-monospace,"Cascadia Mono",Consolas,monospace; font-size:12.5px; white-space:nowrap; }
+  .card { background:#fff; border:1px solid #E5E7EB; border-radius:10px; padding:18px 20px; }
+  .meta { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+           gap:7px 28px; margin-top:16px; font-size:13px; }
+  .meta div { display:flex; gap:10px; }
+  .meta div > span:first-child { color:#6B7280; flex:0 0 96px; }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+            gap:12px; margin:20px 0 8px; }
+  .tile { background:#fff; border:1px solid #E5E7EB; border-radius:10px; padding:14px 16px; }
+  .tile .num { font-size:28px; font-weight:600; line-height:1.1; }
+  .tile .lbl { font-size:12px; color:#6B7280; margin-top:2px; }
+  .tile .sub { font-size:11.5px; color:#6B7280; margin-top:6px; }
+  .charts { display:grid; grid-template-columns:minmax(240px,300px) 1fr; gap:16px; align-items:start; }
+  .chart-stack { display:grid; gap:16px; }
+  .legend { list-style:none; margin:14px 0 0; padding:0; font-size:12.5px; }
+  .legend li { margin-bottom:5px; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:8px; }
+  .donut-card { text-align:center; }
+  .table-wrap { overflow-x:auto; background:#fff; border:1px solid #E5E7EB; border-radius:10px; }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  th, td { text-align:left; padding:9px 12px; border-bottom:1px solid #E5E7EB; vertical-align:top; }
+  th { font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:#6B7280; font-weight:600; }
+  tbody tr:last-child td { border-bottom:none; }
+  .badge { display:inline-block; border:1px solid; border-radius:20px;
+            padding:1px 9px; font-size:11.5px; font-weight:600; white-space:nowrap; }
+  .failed-row td:first-child { box-shadow:inset 3px 0 0 #D6455D; }
+  .filters { margin:0 0 10px; }
+  .filters button { font:inherit; font-size:12.5px; background:#fff; color:#1F2937;
+                     border:1px solid #E5E7EB; border-radius:20px; padding:4px 13px;
+                     margin-right:6px; cursor:pointer; }
+  .filters button[aria-pressed="true"] { background:#1F2937; color:#fff; border-color:#1F2937; }
+  .fail-card { border-left:3px solid #D6455D; margin-bottom:14px; }
+  .fail-card img { max-width:100%; border:1px solid #E5E7EB; border-radius:6px; margin-top:10px; }
+  .meta-label { font-size:11px; color:#6B7280; font-weight:400; margin-left:10px; }
+  .empty { color:#6B7280; }
+  ol, ul { margin:0 0 10px; padding-left:20px; }
+  footer { margin-top:40px; font-size:12px; color:#6B7280; }
+  @media (max-width:720px) { .charts { grid-template-columns:1fr; } }
+  @media print {
+    body { background:#fff; }
+    .filters { display:none; }
+    .card, .tile, .table-wrap { break-inside:avoid; }
+    .fail-card { break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="card">
+    <h1>Test Execution Report</h1>
+    <p class="muted">Swag Labs — smoke run</p>
+    <div class="meta">
+      <div><span>Application</span> <a href="https://www.saucedemo.com">https://www.saucedemo.com</a></div>
+      <div><span>Run ID</span> <span class="mono">swag-labs-2026-09-12-1733</span></div>
+      <div><span>Started</span> 2026-09-12T17:54:12+03:00</div>
+      <div><span>Finished</span> 2026-09-12T17:54:30+03:00</div>
+      <div><span>Browser</span> chrome 152.0.7977.84</div>
+      <div><span>Viewport</span> 1920x1080 on Windows</div>
+      <div><span>Executed by</span> qa-automation-engineer (Playwright)</div>
+      <div><span>Scope</span> Smoke cases only</div>
+    </div>
+  </header>
+
+  <section class="tiles"><div class="tile"><div class="num">28</div><div class="lbl">Total</div><div class="sub">cases in the suite</div></div><div class="tile"><div class="num">5</div><div class="lbl">Passed</div><div class="sub">17.9% of total</div></div><div class="tile"><div class="num">0</div><div class="lbl">Failed</div><div class="sub">0.0% of total</div></div><div class="tile"><div class="num">23</div><div class="lbl">Pending</div><div class="sub">82.1% of total</div></div><div class="tile"><div class="num">17.9%</div><div class="lbl">Pass Rate</div><div class="sub">5 of 28 cases</div></div><div class="tile"><div class="num">100.0%</div><div class="lbl">Smoke Pass Rate</div><div class="sub">5 of 5 smoke cases</div></div></section>
+
+  <h2>Charts</h2>
+  <div class="charts">
+    <div class="card donut-card">
+      <h3>Status</h3>
+      <svg viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="Status breakdown: 5 passed, 0 failed, 23 pending"><circle cx="90" cy="90" r="70" fill="none" stroke="#E5E7EB" stroke-width="26"/><circle cx="90" cy="90" r="70" fill="none" stroke="#2E9E6B" stroke-width="26" stroke-dasharray="78.54 361.28" stroke-dashoffset="-0.00" transform="rotate(-90 90 90)"><title>Passed: 5</title></circle><circle cx="90" cy="90" r="70" fill="none" stroke="#E0A33E" stroke-width="26" stroke-dasharray="361.28 78.54" stroke-dashoffset="-78.54" transform="rotate(-90 90 90)"><title>Pending: 23</title></circle><text x="90" y="86" text-anchor="middle" font-size="26" font-weight="600" fill="#1F2937">17.9%</text><text x="90" y="106" text-anchor="middle" font-size="11" fill="#6B7280">pass rate</text></svg>
+      <ul class="legend"><li><span class="dot" style="background:#2E9E6B"></span>Passed — 5 (17.9%)</li><li><span class="dot" style="background:#D6455D"></span>Failed — 0 (0.0%)</li><li><span class="dot" style="background:#E0A33E"></span>Pending — 23 (82.1%)</li></ul>
+    </div>
+    <div class="chart-stack">
+      <div class="card">
+        <h3>Results by module</h3>
+        <svg viewBox="0 0 640 130" width="100%" height="130" preserveAspectRatio="xMinYMin meet" role="img"><rect x="186.0" y="0" width="51.8" height="22" fill="#2E9E6B"><title>AUTH — Login and Session — Passed: 1</title></rect><text x="211.9" y="15" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">1</text><rect x="237.8" y="0" width="362.2" height="22" fill="#E0A33E"><title>AUTH — Login and Session — Pending: 7</title></rect><text x="418.9" y="15" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">7</text><text x="0" y="15" font-size="12" fill="#1F2937">AUTH — Login and Session</text><text x="608" y="15" font-size="11" fill="#6B7280">8</text><rect x="186.0" y="36" width="51.8" height="22" fill="#2E9E6B"><title>CHK — Checkout — Passed: 1</title></rect><text x="211.9" y="51" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">1</text><rect x="237.8" y="36" width="362.2" height="22" fill="#E0A33E"><title>CHK — Checkout — Pending: 7</title></rect><text x="418.9" y="51" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">7</text><text x="0" y="51" font-size="12" fill="#1F2937">CHK — Checkout</text><text x="608" y="51" font-size="11" fill="#6B7280">8</text><rect x="186.0" y="72" width="69.0" height="22" fill="#2E9E6B"><title>PROD — Products — Passed: 1</title></rect><text x="220.5" y="87" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">1</text><rect x="255.0" y="72" width="345.0" height="22" fill="#E0A33E"><title>PROD — Products — Pending: 5</title></rect><text x="427.5" y="87" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">5</text><text x="0" y="87" font-size="12" fill="#1F2937">PROD — Products</text><text x="608" y="87" font-size="11" fill="#6B7280">6</text><rect x="186.0" y="108" width="138.0" height="22" fill="#2E9E6B"><title>CART — Cart — Passed: 2</title></rect><text x="255.0" y="123" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">2</text><rect x="324.0" y="108" width="276.0" height="22" fill="#E0A33E"><title>CART — Cart — Pending: 4</title></rect><text x="462.0" y="123" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">4</text><text x="0" y="123" font-size="12" fill="#1F2937">CART — Cart</text><text x="608" y="123" font-size="11" fill="#6B7280">6</text></svg>
+      </div>
+      <div class="card">
+        <h3>Results by priority</h3>
+        <svg viewBox="0 0 640 94" width="100%" height="94" preserveAspectRatio="xMinYMin meet" role="img"><rect x="186.0" y="0" width="108.9" height="22" fill="#2E9E6B"><title>High — Passed: 5</title></rect><text x="240.5" y="15" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">5</text><rect x="294.9" y="0" width="305.1" height="22" fill="#E0A33E"><title>High — Pending: 14</title></rect><text x="447.5" y="15" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">14</text><text x="0" y="15" font-size="12" fill="#1F2937">High</text><text x="608" y="15" font-size="11" fill="#6B7280">19</text><rect x="186.0" y="36" width="414.0" height="22" fill="#E0A33E"><title>Medium — Pending: 5</title></rect><text x="393.0" y="51" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">5</text><text x="0" y="51" font-size="12" fill="#1F2937">Medium</text><text x="608" y="51" font-size="11" fill="#6B7280">5</text><rect x="186.0" y="72" width="414.0" height="22" fill="#E0A33E"><title>Low — Pending: 4</title></rect><text x="393.0" y="87" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">4</text><text x="0" y="87" font-size="12" fill="#1F2937">Low</text><text x="608" y="87" font-size="11" fill="#6B7280">4</text></svg>
+      </div>
+    </div>
+  </div>
+
+  <h2>Smoke results</h2>
+  <p class="muted">These answer one question: is the build usable at all?
+     5 of 5 passed.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Test Case ID</th><th>Title</th><th>Module</th><th>Status</th><th>Duration</th></tr></thead>
+      <tbody><tr><td class="mono">TC-AUTH-001</td><td>[Smoke] Standard user can log in and land on the Products page</td><td>Login and Session</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.0s</td></tr><tr><td class="mono">TC-PROD-001</td><td>[Smoke] Products page shows the six products with name and price</td><td>Products</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.5s</td></tr><tr><td class="mono">TC-CART-001</td><td>[Smoke] Adding a product updates the cart count and the button becomes Remove</td><td>Cart</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>1.9s</td></tr><tr><td class="mono">TC-CART-002</td><td>[Smoke] Cart page lists the products that were added</td><td>Cart</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.5s</td></tr><tr><td class="mono">TC-CHK-001</td><td>[Smoke] An order can be placed from cart to confirmation</td><td>Checkout</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.7s</td></tr></tbody>
+    </table>
+  </div>
+
+  <h2>Full results</h2>
+  <div class="filters">
+    <button type="button" data-f="all" aria-pressed="true">All (28)</button>
+    <button type="button" data-f="Passed" aria-pressed="false">Passed (5)</button>
+    <button type="button" data-f="Failed" aria-pressed="false">Failed (0)</button>
+    <button type="button" data-f="Pending" aria-pressed="false">Pending (23)</button>
+  </div>
+  <div class="table-wrap">
+    <table id="results">
+      <thead><tr><th>Test Case ID</th><th>Title</th><th>Module</th><th>Priority</th>
+                 <th>Type</th><th>Status</th><th>Duration</th><th>Evidence</th></tr></thead>
+      <tbody><tr data-status="Passed"><td class="mono">TC-AUTH-001</td><td>[Smoke] Standard user can log in and land on the Products page</td><td>AUTH</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.0s</td><td><a href="screenshots/TC-AUTH-001.png">view</a></td></tr><tr data-status="Passed"><td class="mono">TC-PROD-001</td><td>[Smoke] Products page shows the six products with name and price</td><td>PROD</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.5s</td><td><a href="screenshots/TC-PROD-001.png">view</a></td></tr><tr data-status="Passed"><td class="mono">TC-CART-001</td><td>[Smoke] Adding a product updates the cart count and the button becomes Remove</td><td>CART</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>1.9s</td><td><a href="screenshots/TC-CART-001.png">view</a></td></tr><tr data-status="Passed"><td class="mono">TC-CART-002</td><td>[Smoke] Cart page lists the products that were added</td><td>CART</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.5s</td><td><a href="screenshots/TC-CART-002.png">view</a></td></tr><tr data-status="Passed"><td class="mono">TC-CHK-001</td><td>[Smoke] An order can be placed from cart to confirmation</td><td>CHK</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#2E9E6B;border-color:#2E9E6B">Passed</span></td><td>2.7s</td><td><a href="screenshots/TC-CHK-001.png">view</a></td></tr><tr data-status="Pending"><td class="mono">TC-AUTH-002</td><td>Login is blocked when the username is empty</td><td>AUTH</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-AUTH-003</td><td>Login is blocked when the password is empty</td><td>AUTH</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-AUTH-004</td><td>A wrong password is rejected</td><td>AUTH</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-AUTH-005</td><td>A locked out user cannot log in</td><td>AUTH</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-AUTH-006</td><td>Logout returns the user to the login page</td><td>AUTH</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-AUTH-007</td><td>The Products page cannot be opened by URL while logged out</td><td>AUTH</td><td>High</td><td>Non-Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-AUTH-008</td><td>The browser Back button after logout does not show the previous page</td><td>AUTH</td><td>High</td><td>Non-Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CART-003</td><td>Removing the last product from the cart empties it and hides the cart count</td><td>CART</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CART-004</td><td>The cart is empty after an order is completed</td><td>CART</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CHK-002</td><td>Checkout is blocked when First Name is empty</td><td>CHK</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CHK-003</td><td>Checkout is blocked when Last Name is empty</td><td>CHK</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CHK-004</td><td>Checkout is blocked when Zip/Postal Code is empty</td><td>CHK</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CHK-005</td><td>An order cannot be placed when the cart is empty</td><td>CHK</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CHK-006</td><td>The order total is the item total plus tax</td><td>CHK</td><td>High</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-PROD-002</td><td>Sorting by Price (low to high) puts the cheapest product first</td><td>PROD</td><td>Medium</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-PROD-003</td><td>The chosen sort order stays after the page is refreshed</td><td>PROD</td><td>Medium</td><td>Non-Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-PROD-004</td><td>The product details page shows the name, price and description of the product opened</td><td>PROD</td><td>Medium</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CART-005</td><td>Products stay in the cart after the page is refreshed</td><td>CART</td><td>Medium</td><td>Non-Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CHK-007</td><td>A Zip/Postal Code made only of spaces is rejected</td><td>CHK</td><td>Medium</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-PROD-005</td><td>The cart icon label is written correctly when there is one product</td><td>PROD</td><td>Low</td><td>Non-Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-PROD-006</td><td>The Dynamic Catalog menu item closes the menu and opens its own page</td><td>PROD</td><td>Low</td><td>Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CART-006</td><td>An empty cart shows a message telling the user it is empty</td><td>CART</td><td>Low</td><td>Non-Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr><tr data-status="Pending"><td class="mono">TC-CHK-008</td><td>The checkout fields have a real label, not only placeholder text</td><td>CHK</td><td>Low</td><td>Non-Functional</td><td><span class="badge" style="color:#E0A33E;border-color:#E0A33E">Pending</span></td><td>—</td><td>—</td></tr></tbody>
+    </table>
+  </div>
+
+  <h2>Failed cases</h2>
+  <div class="card empty"><p>No case failed in this run. The five smoke cases all passed, so nothing is waiting to be filed as a bug.</p></div>
+
+  <h2>Pending cases</h2>
+  <p class="muted">23 cases were not executed. Each one says why.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Test Case ID</th><th>Title</th><th>Why it was not run</th></tr></thead>
+      <tbody><tr><td class="mono">TC-AUTH-002</td><td>Login is blocked when the username is empty</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-AUTH-003</td><td>Login is blocked when the password is empty</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-AUTH-004</td><td>A wrong password is rejected</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-AUTH-005</td><td>A locked out user cannot log in</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-AUTH-006</td><td>Logout returns the user to the login page</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-AUTH-007</td><td>The Products page cannot be opened by URL while logged out</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-AUTH-008</td><td>The browser Back button after logout does not show the previous page</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CART-003</td><td>Removing the last product from the cart empties it and hides the cart count</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CART-004</td><td>The cart is empty after an order is completed</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CHK-002</td><td>Checkout is blocked when First Name is empty</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CHK-003</td><td>Checkout is blocked when Last Name is empty</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CHK-004</td><td>Checkout is blocked when Zip/Postal Code is empty</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CHK-005</td><td>An order cannot be placed when the cart is empty</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CHK-006</td><td>The order total is the item total plus tax</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-PROD-002</td><td>Sorting by Price (low to high) puts the cheapest product first</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-PROD-003</td><td>The chosen sort order stays after the page is refreshed</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-PROD-004</td><td>The product details page shows the name, price and description of the product opened</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CART-005</td><td>Products stay in the cart after the page is refreshed</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CHK-007</td><td>A Zip/Postal Code made only of spaces is rejected</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-PROD-005</td><td>The cart icon label is written correctly when there is one product</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-PROD-006</td><td>The Dynamic Catalog menu item closes the menu and opens its own page</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CART-006</td><td>An empty cart shows a message telling the user it is empty</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr><tr><td class="mono">TC-CHK-008</td><td>The checkout fields have a real label, not only placeholder text</td><td>Not executed in this run. The user asked for the five smoke cases only; this case is implemented in no spec yet and was never run, so no result is claimed for it.</td></tr></tbody>
+    </table>
+  </div>
+
+  <h2>Notes and open questions</h2>
+  <div class="card">
+    <h4>Open questions</h4>
+    <ol><li>Only the five smoke cases were executed on request. The other 23 cases are written and reviewed but have no spec yet, so they are Pending. Should the next run implement all of them?</li><li>Six of the pending cases (TC-CHK-005, TC-CHK-007, TC-PROD-003, TC-PROD-005, TC-PROD-006, TC-CART-006) are written to the correct expected behaviour and are expected to fail against the current site. They will produce bug drafts when they run.</li><li>The run used the Google Chrome already installed on the machine (channel: chrome) instead of downloading Playwright&#x27;s own chromium build. Is that acceptable as the standard browser for this flow, or should the bundled chromium be installed?</li><li>The demo site keeps no order history, so the QA-AUTO- order placed by TC-CHK-001 leaves nothing behind. On a real environment this case will need a cleanup step.</li></ol>
+
+    <h4>Suspected defects found while exploring</h4>
+    <p class="muted">Found by hand in Step 1. None of them has been confirmed by an
+       automated run yet, because the cases that cover them are still Pending.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>What was seen</th><th>Status</th></tr></thead>
+        <tbody><tr><td>An order can be placed with an empty cart</td><td>Covered by TC-CHK-005, which is still Pending.</td></tr><tr><td>A Zip/Postal Code of only spaces passes validation</td><td>Covered by TC-CHK-007, still Pending.</td></tr><tr><td>The sort selection is lost after a page refresh</td><td>Covered by TC-PROD-003, still Pending.</td></tr><tr><td>The cart icon is announced as &quot;Cart, 1 items&quot;</td><td>Covered by TC-PROD-005, still Pending.</td></tr><tr><td>&quot;Dynamic Catalog&quot; in the side menu has no visible effect</td><td>Covered by TC-PROD-006, still Pending.</td></tr><tr><td>An empty cart shows no empty-state message</td><td>Covered by TC-CART-006, still Pending.</td></tr><tr><td>The first Add to cart click right after page load did not register</td><td>Seen once during exploration. It did not come back in either automated run, so no case was written for it. Watch for it in the next run.</td></tr></tbody>
+      </table>
+    </div>
+
+    <h4>Corrections made to the numbers</h4>
+    <p>The numbers in the results file added up. Nothing was corrected.</p>
+
+    <h4>What needs a human decision</h4>
+    <p>The smoke set is green, so the build is usable and the flow works end to end.
+       The open decision is whether to implement the remaining 23 cases. Six of them are
+       written to the correct expected behaviour and are expected to fail, which is the point —
+       they are what turns the suspected defects above into bug drafts you can review and file.</p>
+  </div>
+
+  <footer>
+    Generated by qa-report-builder from execution-results.json.
+    Percentages are of the whole suite of 28 cases, not of the cases that ran.
+  </footer>
+</div>
+
+<script>
+  var btns = document.querySelectorAll('.filters button');
+  var rows = document.querySelectorAll('#results tbody tr');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var f = this.getAttribute('data-f');
+      for (var j = 0; j < btns.length; j++) {
+        btns[j].setAttribute('aria-pressed', btns[j] === this ? 'true' : 'false');
+      }
+      for (var k = 0; k < rows.length; k++) {
+        rows[k].hidden = (f !== 'all' && rows[k].getAttribute('data-status') !== f);
+      }
+    });
+  }
+</script>
+</body>
+</html>

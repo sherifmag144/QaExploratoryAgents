@@ -1,0 +1,76 @@
+﻿"Test Case ID","Title","Preconditions","Test Steps","Test Data","Expected Result","Test Type","Priority"
+"TC-AUTH-001","[Smoke] Standard user can log in and land on the Products page","The browser is open on https://www.saucedemo.com and no user is logged in.","1) Type the username in the Username field
+2) Type the password in the Password field
+3) Click Login","Username: standard_user | Password: secret_sauce","The Products page opens at /inventory.html and the page header shows ""Products"".","Functional","High"
+"TC-PROD-001","[Smoke] Products page shows the six products with name and price","Logged in as standard_user, on the Products page.","1) Look at the product list
+2) Count the product cards
+3) Read the name and price on each card","N/A","Six product cards are shown. Each card has a name, a description, a price and an ""Add to cart"" button. The first card is ""Sauce Labs Backpack"" at $29.99.","Functional","High"
+"TC-CART-001","[Smoke] Adding a product updates the cart count and the button becomes Remove","Logged in as standard_user, on the Products page, cart is empty.","1) Click ""Add to cart"" on the Sauce Labs Backpack card
+2) Look at the cart icon in the top bar
+3) Look at the button on the Backpack card","Product: Sauce Labs Backpack ($29.99)","The cart icon shows the number 1 and the button on the Backpack card now reads ""Remove"".","Functional","High"
+"TC-CART-002","[Smoke] Cart page lists the products that were added","Logged in as standard_user with Sauce Labs Backpack and Sauce Labs Bike Light in the cart.","1) Click the cart icon in the top bar
+2) Read the rows in the cart list","Sauce Labs Backpack ($29.99), Sauce Labs Bike Light ($9.99)","The Your Cart page opens at /cart.html and shows two rows: ""Sauce Labs Backpack"" $29.99 and ""Sauce Labs Bike Light"" $9.99, each with QTY 1.","Functional","High"
+"TC-CHK-001","[Smoke] An order can be placed from cart to confirmation","Logged in as standard_user with at least one product in the cart, on the Your Cart page.","1) Click Checkout
+2) Fill in First Name, Last Name and Zip/Postal Code
+3) Click Continue
+4) Click Finish on the overview page","First Name: QA-AUTO-Sherif | Last Name: Magdy | Zip: 11511","The confirmation page opens at /checkout-complete.html and shows ""Thank you for your order!"".","Functional","High"
+"TC-AUTH-002","Login is blocked when the username is empty","On the login page, no user is logged in.","1) Leave the Username field empty
+2) Leave the Password field empty
+3) Click Login","N/A","The user stays on the login page and the message ""Epic sadface: Username is required"" is shown.","Functional","High"
+"TC-AUTH-003","Login is blocked when the password is empty","On the login page, no user is logged in.","1) Type the username in the Username field
+2) Leave the Password field empty
+3) Click Login","Username: standard_user","The user stays on the login page and the message ""Epic sadface: Password is required"" is shown.","Functional","High"
+"TC-AUTH-004","A wrong password is rejected","On the login page, no user is logged in.","1) Type a valid username
+2) Type a password that is not the real one
+3) Click Login","Username: standard_user | Password: wrong_password","The user stays on the login page and the message ""Epic sadface: Username and password do not match any user in this service"" is shown.","Functional","High"
+"TC-AUTH-005","A locked out user cannot log in","On the login page. The account locked_out_user exists and is locked.","1) Type the locked out username
+2) Type the correct password
+3) Click Login","Username: locked_out_user | Password: secret_sauce","The user stays on the login page and the message ""Epic sadface: Sorry, this user has been locked out."" is shown.","Functional","High"
+"TC-AUTH-006","Logout returns the user to the login page","Logged in as standard_user on any page inside the application.","1) Click the menu button in the top left
+2) Click Logout","N/A","The login page opens at / and the Username, Password and Login controls are shown again.","Functional","High"
+"TC-AUTH-007","The Products page cannot be opened by URL while logged out","No user is logged in. The browser is on the login page.","1) Type https://www.saucedemo.com/inventory.html in the address bar
+2) Press Enter","URL: https://www.saucedemo.com/inventory.html","The login page is shown instead of the products, with the message ""Epic sadface: You can only access '/inventory.html' when you are logged in.""","Non-Functional","High"
+"TC-AUTH-008","The browser Back button after logout does not show the previous page","Logged in as standard_user and currently on the order confirmation page.","1) Open the menu and click Logout
+2) Click the browser Back button","N/A","The login page stays on screen with the message ""Epic sadface: You can only access '/checkout-complete.html' when you are logged in."" The previous page content is not shown.","Non-Functional","High"
+"TC-CART-003","Removing the last product from the cart empties it and hides the cart count","Logged in as standard_user with exactly one product in the cart, on the Your Cart page.","1) Click Remove on the product row
+2) Look at the cart list and the cart icon","Product: Sauce Labs Onesie ($7.99)","The product row disappears, no product rows are left in the cart, and the number on the cart icon is gone.","Functional","High"
+"TC-CART-004","The cart is empty after an order is completed","Logged in as standard_user and an order has just been completed.","1) Look at the cart icon on the confirmation page
+2) Click ""Back Home""
+3) Click the cart icon","N/A","The cart icon shows no number and the Your Cart page shows no product rows.","Functional","High"
+"TC-CHK-002","Checkout is blocked when First Name is empty","Logged in as standard_user with a product in the cart, on the checkout information page.","1) Leave all three fields empty
+2) Click Continue","N/A","The page stays on /checkout-step-one.html and the message ""Error: First Name is required"" is shown.","Functional","High"
+"TC-CHK-003","Checkout is blocked when Last Name is empty","Logged in as standard_user with a product in the cart, on the checkout information page.","1) Fill in First Name only
+2) Leave Last Name and Zip/Postal Code empty
+3) Click Continue","First Name: QA-AUTO-Sherif","The page stays on /checkout-step-one.html and the message ""Error: Last Name is required"" is shown.","Functional","High"
+"TC-CHK-004","Checkout is blocked when Zip/Postal Code is empty","Logged in as standard_user with a product in the cart, on the checkout information page.","1) Fill in First Name and Last Name
+2) Leave Zip/Postal Code empty
+3) Click Continue","First Name: QA-AUTO-Sherif | Last Name: Magdy","The page stays on /checkout-step-one.html and the message ""Error: Postal Code is required"" is shown.","Functional","High"
+"TC-CHK-005","An order cannot be placed when the cart is empty","Logged in as standard_user with an empty cart, on the Your Cart page.","1) Click Checkout
+2) Fill in First Name, Last Name and Zip/Postal Code
+3) Click Continue","First Name: QA-AUTO-Empty | Last Name: Cart | Zip: 11511","The application stops the user from going further with an empty cart and does not reach the order overview page.","Functional","High"
+"TC-CHK-006","The order total is the item total plus tax","Logged in as standard_user with Sauce Labs Backpack and Sauce Labs Bike Light in the cart.","1) Click Checkout on the Your Cart page
+2) Fill in the three fields and click Continue
+3) Read the Item total, Tax and Total lines on the overview page","Backpack $29.99 + Bike Light $9.99 | First Name: QA-AUTO-Sherif | Last Name: Magdy | Zip: 11511","The overview shows ""Item total: $39.98"", ""Tax: $3.20"" and ""Total: $43.18"".","Functional","High"
+"TC-PROD-002","Sorting by Price (low to high) puts the cheapest product first","Logged in as standard_user, on the Products page.","1) Open the ""Sort products"" dropdown
+2) Choose ""Price (low to high)""
+3) Read the prices from the first card to the last","Sort option: ""Price (low to high)""","The products are ordered $7.99, $9.99, $15.99, $15.99, $29.99, $49.99, with ""Sauce Labs Onesie"" first and ""Sauce Labs Fleece Jacket"" last.","Functional","Medium"
+"TC-PROD-003","The chosen sort order stays after the page is refreshed","Logged in as standard_user on the Products page with sorting set to Price (low to high).","1) Refresh the page
+2) Read the value shown in the sort dropdown
+3) Read the order of the products","Sort option: ""Price (low to high)""","The sort dropdown still shows ""Price (low to high)"" and the cheapest product is still first.","Non-Functional","Medium"
+"TC-PROD-004","The product details page shows the name, price and description of the product opened","Logged in as standard_user, on the Products page.","1) Click the product name ""Sauce Labs Backpack""
+2) Read the name, description and price on the page","Product: Sauce Labs Backpack ($29.99)","The page opens at /inventory-item.html?id=4 and shows ""Sauce Labs Backpack"", its description and the price $29.99, with a Back to products button.","Functional","Medium"
+"TC-CART-005","Products stay in the cart after the page is refreshed","Logged in as standard_user with two products in the cart, on the Products page.","1) Refresh the page
+2) Look at the number on the cart icon","Sauce Labs Backpack, Sauce Labs Bike Light","The cart icon still shows the number 2.","Non-Functional","Medium"
+"TC-CHK-007","A Zip/Postal Code made only of spaces is rejected","Logged in as standard_user with a product in the cart, on the checkout information page.","1) Fill in First Name and Last Name
+2) Type three spaces in the Zip/Postal Code field
+3) Click Continue","First Name: QA-AUTO-Sherif | Last Name: Magdy | Zip: ""   "" (three spaces)","The page stays on /checkout-step-one.html and the message ""Error: Postal Code is required"" is shown.","Functional","Medium"
+"TC-PROD-005","The cart icon label is written correctly when there is one product","Logged in as standard_user with exactly one product in the cart.","1) Move the focus to the cart icon in the top bar
+2) Read the name the screen reader announces for the icon","One product in the cart","The cart icon is announced as ""Cart, 1 item"" — singular, not ""1 items"".","Non-Functional","Low"
+"TC-PROD-006","The Dynamic Catalog menu item closes the menu and opens its own page","Logged in as standard_user, on the Products page.","1) Click the menu button in the top left
+2) Click ""Dynamic Catalog""
+3) Look at the menu and at the page that opens","N/A","The side menu closes and a catalog page opens that is different from the All Items list.","Functional","Low"
+"TC-CART-006","An empty cart shows a message telling the user it is empty","Logged in as standard_user with an empty cart.","1) Click the cart icon
+2) Read the content of the cart area","N/A","The Your Cart page shows a clear message such as ""Your cart is empty"" instead of only the QTY and Description headers.","Non-Functional","Low"
+"TC-CHK-008","The checkout fields have a real label, not only placeholder text","Logged in as standard_user with a product in the cart, on the checkout information page.","1) Move the focus into the First Name field
+2) Read the name announced for the field
+3) Repeat for Last Name and Zip/Postal Code","N/A","Each of the three fields is announced with its own label (""First Name"", ""Last Name"", ""Zip/Postal Code"") that stays visible after the user starts typing.","Non-Functional","Low"

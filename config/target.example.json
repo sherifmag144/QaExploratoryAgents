@@ -1,0 +1,40 @@
+{
+  "appName": "PM Portal",
+  "appSlug": "pm-portal",
+  "baseUrl": "https://app.example.com",
+  "loginPath": "/login",
+  "credentials": [
+    {
+      "role": "Project Manager",
+      "username": "pm.user@example.com",
+      "password": "PUT-PASSWORD-HERE",
+      "primary": true
+    },
+    {
+      "role": "Team Member",
+      "username": "member@example.com",
+      "password": "PUT-PASSWORD-HERE",
+      "primary": false
+    }
+  ],
+  "scope": {
+    "mode": "full-app",
+    "modules": [],
+    "note": "mode is full-app | modules | smoke-only. When mode is modules, list them in modules[]."
+  },
+  "language": {
+    "uiLanguages": ["en", "ar"],
+    "testRtl": true
+  },
+  "browser": {
+    "name": "chromium",
+    "viewport": { "width": 1920, "height": 1080 }
+  },
+  "safety": {
+    "environment": "staging",
+    "allowCreate": true,
+    "allowEdit": true,
+    "allowDelete": "only-own-records",
+    "dataPrefix": "QA-AUTO-"
+  }
+}
