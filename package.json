@@ -1,0 +1,12 @@
+{
+  "name": "qa-exploratory-playwright",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Permanent Playwright project for the QA exploratory flow. Installed once; every run drops its specs in specs/<run-id>/.",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}
